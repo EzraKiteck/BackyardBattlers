@@ -13,8 +13,8 @@ public class UI extends JFrame{
 	
 	public JPanel inventoryPanel = new JPanel();
 	public JList inventoryList = new JList(listModel);
-	public JTextArea statField = new JTextArea(5, 13);
-	public JTextArea descriptionField = new JTextArea(5, 13);
+	public JTextArea statField = new JTextArea(10, 13);
+	public JTextArea descriptionField = new JTextArea(10, 13);
 
 	public JPanel southPanel = new JPanel();
 	public JPanel buttonPanel = new JPanel();
@@ -22,7 +22,7 @@ public class UI extends JFrame{
 	public JButton useButton = new JButton("Use");
 	public JButton equipButton =  new JButton("Equip");
 	
-	public JLabel resultField = new JLabel(">You look around.");
+	public JTextArea resultField = new JTextArea(4, 100);
 	public JTextField actionField = new JTextField();
 	
 	public UI() {
@@ -37,16 +37,19 @@ public class UI extends JFrame{
 		this.setSize(800, 600);
 		this.setResizable(false);
 		this.setLayout(new BorderLayout());
+		
 		this.add(inventoryPanel, BorderLayout.EAST);
 		inventoryPanel.setBorder(new TitledBorder("Inventory"));
 		inventoryPanel.setLayout(new BoxLayout(inventoryPanel, BoxLayout.PAGE_AXIS));
 		inventoryPanel.add(inventoryList);
 		inventoryPanel.add(descriptionField);
+		
 		this.add(mainPanel, BorderLayout.CENTER);
 		mainPanel.add(mainLabel);
 		mainLabel.setPreferredSize(new Dimension(400, 400));
 		this.add(statField, BorderLayout.WEST);
 		statField.setBorder(new TitledBorder("Stats"));
+		
 		this.add(southPanel, BorderLayout.SOUTH);
 		southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.PAGE_AXIS));
 		southPanel.add(resultField);
@@ -56,6 +59,10 @@ public class UI extends JFrame{
 		buttonPanel.add(attackButton);
 		buttonPanel.add(useButton);
 		buttonPanel.add(equipButton);
+		
+		resultField.setEditable(false);
+		resultField.setLineWrap(true);
+		resultField.setText(">You find yourself in an abandoned car shed.\n>You're not sure why a car shed would be inhabited anyway, but you have more pressing matters to deal with.");
 		
 		descriptionField.setEditable(false);
 		descriptionField.setLineWrap(true);
